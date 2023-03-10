@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        div{
+            border-style:solid;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p>Aprēiķināt cik daudz informācijas var lejuplādēt</p>
+        <input type="text" id="Inp" onfocus=res()><p> sekundēs, ja interneta ātrums ir 25Mbps</p>
+        <br>
+        <p>Atbilde</p>
+        <br>
+        <input type="label" id="out"> 
+        <p><input type="radio" name="ch" id="kib">KiB<input type="radio" name="ch" id="kb">KB</p>
+    </div>
+    
+    <script>
+        function res(){
+            var ele = document.getElementsByName("ch");
+            document.getElementById("Inp").value="";
+            document.getElementById("out").value="";
+            for(var i=0;i<ele.length;i++)
+                ele[i].checked = false;
+        }
+        function fun(){
+            var val = document.getElementById("Inp").value;
+            var atb="";
+            if(document.getElementById("kib").checked){
+                atb = val*4301.7578125
+            }else if(document.getElementById("kb").checked){
+                atb = val*3125
+            }   
+            document.getElementById("out").value = atb;
+        }
+        function main(){
+            var intervalId = window.setInterval(function (){fun()}, 100);
+        }
+        main();
+        </script>
+</body>
+</html>
